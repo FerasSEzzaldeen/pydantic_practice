@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  
+   
+  resin-migration-aws-local:
+    container_name: resin-migration-aws-local
+    image: localstack/localstack:0.12.11
+    environment:
+      - SERVICES=sns,sqs,sts,s3
+      - VIRTUAL_HOST=resin-migration-aws-local.docker
+    ports:
+      - "4566"
+  
+
+  transformation:
+    build: 
+      context: .
+    container_name: transformation
+    volumes:
+      - ${PWD}:/app
+    environment:
+      - AWS_ENDPOINT_URL=http://resin-migration-aws-local:4566
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    depends_on: 
+      - resin-migration-aws-local
+    command: ['python', "-m" , "bucket.bucket" ]
