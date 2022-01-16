@@ -12,8 +12,8 @@ queue = sqs_resource.get_queue_by_name(QueueName="sqs-queue")
 
 file = open("data/output.json", "a")
 
-while (int(queue.attributes['ApproximateNumberOfMessages']) > 0
-       and int(queue.attributes['ApproximateNumberOfMessagesNotVisible']) >= 0):
+while (int(queue.attributes['ApproximateNumberOfMessages'])
+       or int(queue.attributes['ApproximateNumberOfMessagesNotVisible'])):
     response = queue.receive_messages()
     line = response[0].body
     new_line = transform(json.loads(line))
