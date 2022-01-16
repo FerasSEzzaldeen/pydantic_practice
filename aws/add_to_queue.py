@@ -10,8 +10,6 @@ queue = sqs_resource.get_queue_by_name(QueueName="sqs-queue")
 with open("data/input.json", "r") as data:
     lines = data.readlines()
     for line in lines:
-        print(line)
         queue.send_message(
             MessageBody=line)
 
-print(queue.attributes)
