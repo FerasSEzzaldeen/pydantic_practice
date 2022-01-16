@@ -8,10 +8,10 @@ setup:
 	docker-compose run transformation
 
 insert:
-	docker-compose run transformation python -m aws.make_queue
+	docker-compose run transformation python -m aws.add_to_queue
 
 read:
-	docker-compose run transformation python -m aws.read_queue
+	docker-compose run transformation python -m aws.read_from_queue
 
 check:
 	docker-compose run transformation python -m aws.last_check

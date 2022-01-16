@@ -3,3 +3,8 @@
 {"emp_id": "789", "full_name": "Muhannad Moghrabi", "adult": false, "domain": "fulfillment.com", "tax_percent": 0.1, "after_tax": 13500.0}
 {"emp_id": "147", "full_name": "Feras Ezz", "adult": true, "domain": "customer-support.com", "tax_percent": 0.2, "after_tax": 17600.0}
 {"emp_id": "147", "full_name": "Sobhi Bar", "adult": true, "domain": "pre-sales.com", "tax_percent": 0.2, "after_tax": 20000.0}
+{"emp_id": "123", "full_name": "Belal Ali", "adult": false, "domain": "it-services.com", "tax_percent": 0.3, "after_tax": 24500.0}
+{"emp_id": "456", "full_name": "Ameer Adhami", "adult": true, "domain": "sales-dep.com", "tax_percent": 0.0, "after_tax": 6500.0}
+{"emp_id": "789", "full_name": "Muhannad Moghrabi", "adult": false, "domain": "fulfillment.com", "tax_percent": 0.1, "after_tax": 13500.0}
+{"emp_id": "147", "full_name": "Feras Ezz", "adult": true, "domain": "customer-support.com", "tax_percent": 0.2, "after_tax": 17600.0}
+{"emp_id": "147", "full_name": "Sobhi Bar", "adult": true, "domain": "pre-sales.com", "tax_percent": 0.2, "after_tax": 20000.0}
