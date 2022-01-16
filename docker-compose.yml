@@ -26,4 +26,4 @@ services:
       - AWS_DEFAULT_REGION=us-west-2
     depends_on: 
       - resin-migration-aws-local
-    command: ['python', "-m" , "aws.bucket"]
+    command: ['python', "-m" , "aws.setup"]
