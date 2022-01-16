@@ -23,6 +23,7 @@ services:
       - AWS_ENDPOINT_URL=http://resin-migration-aws-local:4566
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_REGION=us-west-2
     depends_on: 
       - resin-migration-aws-local
-    command: ['python', "-m" , "bucket.bucket" ]
+    command: ['python', "-m" , "aws.bucket"]

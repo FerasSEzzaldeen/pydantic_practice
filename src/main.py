@@ -12,8 +12,9 @@ from db.db import select_all
 
 
 
-# def create():
-#     ...
 
-if __name__ == '__main__':
-    # create()
+
+# if __name__ == '__main__':
+#     migrate()
+
+print('pgggg')
