@@ -12,7 +12,6 @@ services:
     ports:
       - "4566"
   
-
   transformation:
     build: 
       context: .
@@ -24,6 +23,13 @@ services:
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
       - AWS_DEFAULT_REGION=us-west-2
+      - REDIS_HOST=migration-redis
+      - REDIS_PORT=6379
     depends_on: 
       - resin-migration-aws-local
+      - migration-redis
     command: ['python', "-m" , "aws.setup"]
+
+  migration-redis:
+    container_name: migration-redis
+    image: redis:6.2.1
