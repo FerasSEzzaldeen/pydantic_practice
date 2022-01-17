@@ -1,8 +1,6 @@
 version: "3.8"
 
 services:
-  
-   
   resin-migration-aws-local:
     container_name: resin-migration-aws-local
     image: localstack/localstack:0.12.11
@@ -12,7 +10,6 @@ services:
     ports:
       - "4566"
   
-
   transformation:
     build: 
       context: .
@@ -24,6 +21,24 @@ services:
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
       - AWS_DEFAULT_REGION=us-west-2
+      - REDIS_HOST=migration-redis
+      - REDIS_PORT=6379
     depends_on: 
       - resin-migration-aws-local
-    command: ['python', "-m" , "aws.setup"]
+      - migration-redis
+      - redis-commander
+    command: ['python', '-m' , 'aws.read_from_queue']
+
+  migration-redis:
+    container_name: migration-redis
+    image: redis:6.2.1
+  
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:migration-redis:6379
+    ports:
+      - 8081:8081
