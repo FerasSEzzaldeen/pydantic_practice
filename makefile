@@ -5,7 +5,7 @@ lint:
 	mypy src
 
 setup:
-	docker-compose run transformation
+	docker-compose run transformation python -m aws.setup
 
 insert:
 	docker-compose run transformation python -m aws.add_to_queue

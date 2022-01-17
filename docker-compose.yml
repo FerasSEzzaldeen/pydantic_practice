@@ -27,7 +27,7 @@ services:
       - resin-migration-aws-local
       - migration-redis
       - redis-commander
-    command: ['make', 'setup']
+    command: ['python', '-m' , 'aws.read_from_queue']
 
   migration-redis:
     container_name: migration-redis

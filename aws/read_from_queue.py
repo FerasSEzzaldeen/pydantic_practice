@@ -18,7 +18,8 @@ while (int(queue.attributes['ApproximateNumberOfMessages'])
     response = queue.receive_messages()
     line = response[0].body
     new_line = transform(json.loads(line))
-    redis_client.set(new_line['emp_id'], json.dumps(new_line))
+    emp_id = new_line['emp_id']
+    redis_client.set(emp_id, json.dumps(new_line))
     response[0].delete()
 
 
