@@ -1,8 +1,6 @@
 version: "3.8"
 
 services:
-  
-   
   resin-migration-aws-local:
     container_name: resin-migration-aws-local
     image: localstack/localstack:0.12.11
@@ -28,8 +26,19 @@ services:
     depends_on: 
       - resin-migration-aws-local
       - migration-redis
-    command: ['python', "-m" , "aws.setup"]
+      - redis-commander
+    command: ['make', 'setup']
 
   migration-redis:
     container_name: migration-redis
     image: redis:6.2.1
+  
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:migration-redis:6379
+    ports:
+      - 8081:8081
