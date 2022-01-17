@@ -24,7 +24,8 @@ while (int(queue.attributes['ApproximateNumberOfMessages'])
 
 file = open("data/output.json", "a")
 for key in redis_client.keys():
-    file.write(f"{redis_client.get(key)}\n")
+    new_line = redis_client.get(key).decode("utf-8")
+    file.write(f"{new_line}\n")
     redis_client.delete(key)
 
 file.close()
